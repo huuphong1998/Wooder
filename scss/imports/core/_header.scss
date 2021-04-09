@@ -1,0 +1,225 @@
+
+//     // @include desktop {
+        
+//     // }
+//     // @include tablet {
+        
+//     // }
+//     // @include mobile {
+        
+//     // }
+//     // @include mobile-xxs {
+        
+//     // }
+// }
+
+header {
+    --heightHeader: 80px;
+    position: fixed;
+    width: 100%;
+    height: var(--heightHeader);
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: transparent;
+    &.headercolor {
+        background: black;
+    }
+    .container-fuild {
+        height: 100%;
+        @include midflex-between();
+        padding: 0 15px;
+        .logo {
+            &__img {
+                width: 170px;
+            }
+            .hidden {
+                display: none;
+            }   
+        }
+        .menu {
+            display: flex;
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            li{
+                height: 100%;
+                a{
+                    height: 100%;
+                    @include midflex;
+                    @include text(16px, $font-normal, normal, $white-cl, uppercase);
+                    margin: 0 18px;
+                    @include transition($t);
+                    position: relative;
+                    overflow: hidden;
+                    &::after {
+                        content: "";
+                        width: 100%;
+                        height: 2px;
+                        background: #fff;
+                        position: absolute;
+                        left: 0;
+                        bottom: 24px;
+                        @include transform(scaleX(0));
+                        @include transform-origin(left center);
+                        @include transition($t cubic-bezier(.92,.03,.49,.92));
+                    }
+                    &.active,
+                    &:hover {
+                        // opacity: 0.5;
+                        // @include transition($t);
+                        &::after {
+                            @include transform(scaleX(1));
+                            @include transform-origin(right center);
+                            @include transition($t cubic-bezier(.92,.03,.49,.92));
+                        }
+                    }
+                }
+            }
+            &.active {
+                @include midflex();
+                flex-direction: column;
+                width: 100vw;
+                height: 100vh;
+                background: $black-cl;
+                position: fixed;
+                top: 50px;
+                left: 0;
+                @include transform(initial);
+                z-index: 200;
+                opacity: 1;
+                // @include transition(opacity $t);
+                li {
+                    height: unset;
+                    width: 100%;
+                    text-align: center;
+                    a {
+                        padding: 20px 0;
+                        color: $white-cl;
+                        height: unset;
+                        &::after {
+                            display: none;
+                        }
+                    }
+
+                }
+            }    
+        }
+        .right {
+            height: 100%;
+            display: inline-flex; 
+            .lang {
+                height: 100%;
+                @include midflex;
+                @include text(16px, $font-normal, normal, $white-cl, uppercase);
+                position: relative;
+                &__current {
+                    display: inline-flex;
+                    cursor: pointer;
+                    i {
+                        @include midflex;
+                        margin-left: 6px;
+                        img {
+                            width: 12px;
+                        }
+                    }
+                }
+                &__option {
+                    width: 60px;
+                    height: auto;
+                    background: $yellow-cl;
+                    padding: 15px;
+                    position: absolute;
+                    right: 0;
+                    top: 60px;
+                    text-align: right;
+                    display: none;
+                    a {
+                        color: $white-cl;
+                        padding: 10px 0;
+                        &:hover {
+                            color: $black-cl;
+                        }
+                    }
+                    &.active {
+                        display: block;
+                    }
+                }
+                // &:hover {
+                //     .lang__option {
+                //         display: block;            
+                //     }    
+                // }
+            }
+            .btnmenu {
+                display: none;
+                width: 40px;
+                height: 22px;
+                position: relative;
+                z-index: 300;
+                margin-left: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+                &::before, &::after,span {
+                    content: "";
+                    width: 100%;
+                    height: 2px;
+                    display: block;
+                    background: $yellow-cl;
+                    @include transform(rotate(0deg) translateY(0px));
+                    @include transition(transform $t);
+                }
+                span{
+                    top: 50%;
+                    @include transform(translateY(-50%));
+                    position: absolute;
+                }
+                &::after {
+                    position: absolute;
+                    bottom: 0;
+                }
+                &.clicked {
+                    &::before {
+                        @include transform(rotate(45deg) translate(6px, 8px));
+                        @include transition(transform $t);
+                    }
+                    span {
+                        opacity: 0;
+                        @include transition($t);
+                    }
+                    &::after {
+                        @include transform(rotate(-45deg) translate(4px, -8px));
+                        @include transition(transform $t);
+                    }
+                }
+            }
+        }
+    }
+    @include tablet {
+        .container-fuild {
+            .menu {
+                display: none;
+            }
+            .right {
+                .btnmenu {
+                    display: block;
+                }
+            }
+        }
+    }
+    @include mobile {
+        --heightHeader: 60px;
+        .container-fuild {
+            .menu {
+                display: none;
+            }
+            .right {
+                .btnmenu {
+                    display: block;
+                }
+            }
+        }
+    }
+}

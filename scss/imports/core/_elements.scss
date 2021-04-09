@@ -1,0 +1,127 @@
+a {
+    color: $black-cl;
+    text-decoration: none;
+    display: block;
+}
+
+img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+}
+
+.btnmain {
+    border: 1px solid $white-cl;
+    padding: 12px 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 2px;
+    cursor: pointer;
+    @include text (14px, $font-normal, normal, $white-cl, uppercase);
+    @include transition(0.3s);
+    i {
+        display: block;
+        margin-left: 15px;
+        position: relative;
+        right: 0;
+        @include transition(0.3s);
+        z-index: 10;
+    }
+    &:hover {
+        background: $yellow-cl;
+        @include transition(0.3s);
+        i {
+            margin-left: 22px;
+            right: -10px;
+            @include transition(0.3s);
+        }
+    }
+    .icon-play {
+        margin-right: 10px;
+    }
+    @include mobile {
+        padding: 10px 20px;
+    }
+}
+
+.btnmore {
+    display: inline-flex;
+    align-items: center;
+    @include text(14px, $font-bold, $lh-text, $black-cl, uppercase);
+    letter-spacing: 2px;
+    position: relative;
+    img {
+        margin-left: 10px;
+        position: relative;
+        @include transform(translateX(0));
+        @include transition($t);
+    }
+    &::before {
+        content: "";
+        width: 35px;
+        height: 2px;
+        background: #c6b89e;
+        display: block;
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+    }
+    &:hover {
+        img {
+            position: relative;
+            @include transform(translateX(10px));
+            @include transition($t);
+        }
+    }
+}
+
+.back-to-top {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 30px;
+    height: 30px;
+    background: $yellow-cl;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    &.bttblock {
+        display: block;
+    }
+}
+
+.popup-video {
+    display: none;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($color: #000000, $alpha: 0.7);
+    // display: flex;
+    align-items: center;
+    justify-content: center;
+    &.videoflex {
+        display: flex;
+    }
+    .wrap {
+        padding: 5px;
+        background: white;
+        position: relative;
+        .close {
+            position: absolute;
+            right: -25px;
+            top: -25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            font-weight: bold;
+            font-size: 20px;
+            cursor: pointer;
+            @include midflex();
+        }
+    }
+}

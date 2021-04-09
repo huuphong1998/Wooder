@@ -1,0 +1,44 @@
+.footer {
+	background: $black-cl;
+
+	.container {
+		padding: 20px 0;
+		position: relative;
+		@include midflex-between;
+
+		.copy {
+			@include text(12px, $font-normal, 0.5px, #b0b0b0, uppercase);
+		}
+
+		.logoft {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 140px;
+		}
+
+		.backtotop {
+			@include text(12px, $font-normal, 0.5px, #b0b0b0, uppercase);
+		}
+	}
+
+
+
+	@include mobile {
+		.container {
+			display: block;
+			position: initial;
+
+			.copy,
+			.backtotop {
+				text-align: center;
+			}
+
+			.logoft {
+				position: initial;
+				transform: initial;
+				margin: 20px auto;
+			}
+		}
+	}
+}
