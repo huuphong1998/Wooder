@@ -662,7 +662,7 @@
 
     .photos {
         &.pd {
-            padding-bottom: 0;
+            padding-top: 0;
         }
 
         .flickity-viewport {
@@ -690,6 +690,13 @@
                     transition: opacity 0.3s;
                     -webkit-transition: opacity 0.3s;
                 }
+            }
+        }
+
+        @include mobile {
+            &.pd {
+                padding-top: 60px;
+                padding-bottom: 0;
             }
         }
     }
