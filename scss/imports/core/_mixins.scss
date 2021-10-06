@@ -73,22 +73,27 @@
 
 @mixin br($radius) {
 	border-radius: $radius;
-	background-clip: padding-box; /* stops bg color from leaking outside the border: */
+	background-clip: padding-box;
+	/* stops bg color from leaking outside the border: */
 }
 
 @mixin keyframes($animation-name) {
 	@-webkit-keyframes #{$animation-name} {
 		@content;
 	}
+
 	@-moz-keyframes #{$animation-name} {
 		@content;
 	}
+
 	@-ms-keyframes #{$animation-name} {
 		@content;
 	}
+
 	@-o-keyframes #{$animation-name} {
 		@content;
 	}
+
 	@keyframes #{$animation-name} {
 		@content;
 	}
@@ -101,6 +106,7 @@
 	-o-animation: #{$str};
 	animation: #{$str};
 }
+
 @mixin transform($args) {
 	transform: $args;
 	-webkit-transform: $args;
@@ -112,6 +118,7 @@
 	-webkit-transform-origin: $args;
 	-o-transform-origin: $args;
 }
+
 @mixin transition-delay($args) {
 	transition-delay: $args;
 	-webkit-transition-delay: $args;
@@ -123,6 +130,7 @@
 	-webkit-transition: $args;
 	-o-transition: $args;
 }
+
 @mixin text($font-size, $font-family, $line-height, $color, $text-transform) {
 	font-size: $font-size;
 	font-family: $font-family;
@@ -158,6 +166,7 @@
 	top: 0;
 	left: 0;
 }
+
 @mixin full-fixed() {
 	width: 100%;
 	height: 100%;
@@ -165,10 +174,12 @@
 	top: 0;
 	left: 0;
 }
+
 @mixin hidden() {
 	opacity: 0;
 	visibility: hidden;
 }
+
 @mixin visible() {
 	opacity: 1;
 	visibility: visible;
@@ -185,9 +196,11 @@
 	&::-webkit-scrollbar {
 		width: 4px;
 	}
+
 	&::-webkit-scrollbar-track {
 		background: $black-cl;
 	}
+
 	&::-webkit-scrollbar-thumb {
 		background: #2b2b2b;
 	}
